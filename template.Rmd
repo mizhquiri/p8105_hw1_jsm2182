@@ -7,7 +7,7 @@ output:
 
 ---
 
-# Problem 1.A
+# Problem 1
 
 Below I create a data frame called **problem1_df** comprised of the following:
 
@@ -16,9 +16,12 @@ Below I create a data frame called **problem1_df** comprised of the following:
 - a character vector of length 10
 - a factor vector of length 10, with 3 different factor “levels”
 
-```{r}
+```{r, echo = FALSE}
 library(tidyverse)
+```
 
+
+```{r _problem1_df_create}
 set.seed(10)
 
 problem1_df = tibble(
@@ -31,6 +34,7 @@ problem1_df = tibble(
 problem1_df
 
 ```
+
 
 I inspect the data for the mean of each of the 4 variables
 
@@ -57,23 +61,53 @@ I am able to obtain a mean value for the factor vector but not for the character
 
 # Problem 2
 
-I will now move
+I will now open a dataset called *penguins*
 ```{r}
 
 data("penguins", package = "palmerpenguins")
 library(tidyverse)
 
+```
+
+I then looked through *penguins* to find the variable names and summary statistics
+```{r_penguins_summary, COLLAPSE=TRUE}
+data("penguins", package = "palmerpenguins")
+library(tidyverse)
 view(penguins)
 names(penguins)
-summary(penguins)
+summary(penguins) #this provides summary statistics.
+165/(165+168+11)#this will allow for the percent breakdown of females
+```
 
-nrow(penguins)
+In *penguins* there are 8 variables: species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex and year. In species, for example, the most common species is Adelie followed by Gentoo. About 47% are female (not including 11 missing values).
+
+
+```{r_penguins_colxrow}
+
+data("penguins", package = "palmerpenguins")
+library(tidyverse)
 ncol(penguins)
+nrow(penguins)
+```
 
+The number of columns in *penguins* is 8. The number of rows is 344 (343 observations).
+
+```{r_penguins_flipper_mean}
 pull(penguins)
 
 penguins$flipper_length_mm
-class(penguins$flipper_length_mm)
 
 mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
+
+The mean flipper length in *penguins* is 200.9 mm.
+
+
+I will now create a scatterplot by of bill length and flipper length by species. 
+```{r}
+ggplot(penguins, aes(y = flipper_length_mm, x = bill_length_mm, color = species)) + geom_point()
+
+ggsave("penguins_scatter.pdf")
+```
+
+
