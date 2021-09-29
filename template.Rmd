@@ -1,0 +1,38 @@
+---
+title: "P8105 Homework 1"
+author: Jennifer Mizhquiri Barbecho
+date: 2021-09-29
+output: 
+  github_document
+
+---
+
+# Problem 1.A
+
+Below I create a data frame called **problem1_df** comprised of the following:
+
+- a random sample of size 10 from a standard Normal distribution
+- a logical vector indicating whether elements of the sample are greater than 0
+- a character vector of length 10
+- a factor vector of length 10, with 3 different factor “levels”
+
+```{r}
+library(tidyverse)
+
+problem1_df = tibble(
+  samp = rnorm(10),
+  greater_than_0_logical = (samp>0),
+  vec_char = c("This" , "is" , "a" , "ten", "character" , "vector" , "for" , "this" ,  "problem" , "set"),
+  vec_factor = factor(c("level_a" , "level_b" , "level_c" , "level_b" , "level_c" , "level_c" , "level_a" , "level_b" , "level_c" , "level_a"))
+  )
+
+problem1_df
+```
+
+#Problem 2
+```{r}
+
+data("penguins", package = "palmerpenguins")
+
+
+```
