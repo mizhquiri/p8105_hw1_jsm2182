@@ -86,15 +86,15 @@ mean.
 
 # Problem 2
 
-I will now open a dataset called *penguins*
+I will now open a dataset called **penguins**.
 
 ``` r
 data("penguins", package = "palmerpenguins")
 library(tidyverse)
 ```
 
-I then looked through *penguins* to find the variable names and summary
-statistics
+I then looked through **penguins** to find the variable names and
+summary statistics.
 
 ``` r_penguins_summary
 data("penguins", package = "palmerpenguins")
@@ -102,11 +102,13 @@ library(tidyverse)
 view(penguins)
 names(penguins)
 summary(penguins) #this provides summary statistics.
-165/(165+168+11)#this will allow for the percent breakdown of females
+165/(165 + 168 + 11)#this will allow for the percent breakdown of females
 ```
 
-In *penguins* there are 8 variables: species, island, bill\_length\_mm,
-bill\_depth\_mm, flipper\_length\_mm, body\_mass\_g, sex and year. In
+In **penguins** there are 8 variables: species, island,
+bill\_length\_mm, bill\_depth\_mm, flipper\_length\_mm, body\_mass\_g,
+sex and year. This dataset provides biometric, physical location, and
+time data for three sets of penguins across three different islands. In
 species, for example, the most common species is Adelie followed by
 Gentoo. About 47% are female (not including 11 missing values).
 
@@ -117,8 +119,8 @@ ncol(penguins)
 nrow(penguins)
 ```
 
-The number of columns in *penguins* is 8. The number of rows is 344 (343
-observations).
+The number of columns in **penguins** is 8 and the number of rows is
+344.
 
 ``` r_penguins_flipper_mean
 pull(penguins)
@@ -128,10 +130,10 @@ penguins$flipper_length_mm
 mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
 
-The mean flipper length in *penguins* is 200.9 mm.
+The mean flipper length in **penguins** is 200.9152047.
 
-I will now create a scatterplot by of bill length and flipper length by
-species.
+I will now create a scatterplot *(fig. 1)* by of bill length and flipper
+length by species.
 
 ``` r
 ggplot(penguins, aes(y = flipper_length_mm, x = bill_length_mm, color = species)) + geom_point()
@@ -141,6 +143,11 @@ ggplot(penguins, aes(y = flipper_length_mm, x = bill_length_mm, color = species)
 
 ![](template_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
+*fig 1.* *This scatterplot demonstrates that there is a weakly linear
+relationship between bill length and flipper length, regardless of
+penguin species. Overall, the Adelie species has shorter bills and
+flippers and the Gentoo flippers has longer bills and flippers.*
+
 ``` r
 ggsave("penguins_scatter.pdf")
 ```
@@ -148,3 +155,8 @@ ggsave("penguins_scatter.pdf")
     ## Saving 7 x 5 in image
 
     ## Warning: Removed 2 rows containing missing values (geom_point).
+
+You may find this scatterplot saved as a PDF in the R project under
+**penguins\_scatter.pdf**.
+
+\`\`\`
